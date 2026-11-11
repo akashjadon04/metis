@@ -1620,17 +1620,17 @@ export const communities = [
   {
     name: 'GitHub',
     icon: 'riGithubFill',
-    url: 'https://github.com/AutomaApp/automa',
+    url: 'https://www.linkedin.com/in/akashjadon',
   },
   {
     name: 'Twitter',
     icon: 'riTwitterLine',
-    url: 'https://twitter.com/AutomaApp',
+    url: 'https://www.linkedin.com/in/akashjadon',
   },
   {
     name: 'Discord',
     icon: 'riDiscordLine',
-    url: 'https://discord.gg/C6khwwTE84',
+    url: 'https://www.linkedin.com/in/akashjadon',
   },
   {
     name: 'YouTube',

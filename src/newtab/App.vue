@@ -14,7 +14,7 @@
           </p>
           <ui-button
             tag="a"
-            href="https://extension.automa.site/auth"
+            href="#"
             class="mt-6 block w-full"
             variant="accent"
           >
@@ -33,7 +33,7 @@
           {{ t('updateMessage.text1', { version: currentVersion }) }}
         </p>
         <a
-          :href="`https://github.com/AutomaApp/automa/releases/latest`"
+          :href="`https://www.linkedin.com/in/akashjadon`"
           target="_blank"
           rel="noopener"
           class="ml-1 underline"
