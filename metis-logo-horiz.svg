@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" fill="none">
+  <defs>
+    <linearGradient id="metisGradH" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#E11D48" />
+    </linearGradient>
+  </defs>
+  <g transform="translate(10, 5) scale(0.7)">
+    <path d="M50 12 L88 48 L72 56 L50 32 L28 56 L12 48 Z" fill="url(#metisGradH)" />
+    <path d="M50 42 L80 72 L66 80 L50 62 L34 80 L20 72 Z" fill="url(#metisGradH)" opacity="0.8" />
+  </g>
+  <text x="85" y="44" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif" font-weight="800" font-size="28" letter-spacing="4" fill="#451A03">METIS</text>
+  <text x="87" y="60" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-weight="600" font-size="9" letter-spacing="2" fill="#D97706">STEALTH TASK AUTOMATION</text>
+</svg>

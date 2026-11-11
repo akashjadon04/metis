@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="metisGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="50%" stop-color="#EA580C" />
+      <stop offset="100%" stop-color="#E11D48" />
+    </linearGradient>
+  </defs>
+  <path d="M50 12 L88 48 L72 56 L50 32 L28 56 L12 48 Z" fill="url(#metisGrad)" />
+  <path d="M50 42 L80 72 L66 80 L50 62 L34 80 L20 72 Z" fill="url(#metisGrad)" opacity="0.8" />
+  <polygon points="50,22 55,30 45,30" fill="#FEF3C7" />
+</svg>
