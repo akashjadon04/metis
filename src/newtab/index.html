@@ -3,6 +3,69 @@
   <head>
     <meta charset="UTF-8" />
     <title>Metis - Workflow Automation Studio by Akash Jadon</title>
+    <script>
+      (function() {
+        if (typeof window === 'undefined') return;
+        window.chrome = window.chrome || {};
+        window.chrome.runtime = window.chrome.runtime || {
+          id: 'metis-local-dev',
+          getManifest: () => ({ version: '1.30.0', name: 'Metis' }),
+          getURL: (p) => p || '',
+          onMessage: { addListener: () => {}, removeListener: () => {} },
+          sendMessage: () => Promise.resolve({}),
+          connect: () => ({ onMessage: { addListener: () => {} }, postMessage: () => {}, onDisconnect: { addListener: () => {} } }),
+        };
+        window.chrome.tabs = window.chrome.tabs || {
+          query: () => Promise.resolve([]),
+          get: () => Promise.resolve({ id: 1, title: 'Metis Studio', url: window.location.href }),
+          create: (opts) => { if (opts?.url) window.open(opts.url, '_blank'); return Promise.resolve({}); },
+        };
+        const mem = {};
+        window.chrome.storage = window.chrome.storage || {
+          local: {
+            get: (keys, cb) => {
+              const res = {};
+              if (Array.isArray(keys)) {
+                keys.forEach(k => { res[k] = mem[k] !== undefined ? mem[k] : JSON.parse(localStorage.getItem('metis_' + k) || 'null'); });
+              } else if (typeof keys === 'string') {
+                res[keys] = mem[keys] !== undefined ? mem[keys] : JSON.parse(localStorage.getItem('metis_' + keys) || 'null');
+              } else if (keys && typeof keys === 'object') {
+                Object.keys(keys).forEach(k => {
+                  res[k] = mem[k] !== undefined ? mem[k] : (JSON.parse(localStorage.getItem('metis_' + k) || 'null') ?? keys[k]);
+                });
+              } else {
+                Object.assign(res, mem);
+              }
+              if (cb) cb(res);
+              return Promise.resolve(res);
+            },
+            set: (items, cb) => {
+              Object.keys(items || {}).forEach(k => {
+                mem[k] = items[k];
+                try { localStorage.setItem('metis_' + k, JSON.stringify(items[k])); } catch(e) {}
+              });
+              if (cb) cb();
+              return Promise.resolve();
+            },
+            remove: (keys, cb) => {
+              const arr = Array.isArray(keys) ? keys : [keys];
+              arr.forEach(k => {
+                delete mem[k];
+                localStorage.removeItem('metis_' + k);
+              });
+              if (cb) cb();
+              return Promise.resolve();
+            },
+            clear: (cb) => {
+              Object.keys(mem).forEach(k => delete mem[k]);
+              if (cb) cb();
+              return Promise.resolve();
+            }
+          }
+        };
+        window.browser = window.browser || window.chrome;
+      })();
+    </script>
   </head>
 
   <body>

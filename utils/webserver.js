@@ -34,10 +34,16 @@ const server = new WebpackDevServer(
     https: false,
     hot: false,
     client: false,
-    host: 'localhost',
+    host: '0.0.0.0',
     port: env.PORT,
     static: {
       directory: path.join(__dirname, '../build'),
+    },
+    setupMiddlewares: (middlewares, devServer) => {
+      devServer.app.get('/', (req, res) => {
+        res.redirect('/newtab.html');
+      });
+      return middlewares;
     },
     devMiddleware: {
       publicPath: `http://localhost:${env.PORT}/`,
