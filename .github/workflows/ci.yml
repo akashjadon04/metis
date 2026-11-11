@@ -1,0 +1,25 @@
+name: Metis CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  verify:
+    name: Verify Metis Extension
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Validate Manifests
+        run: |
+          node -e "const m = require('./src/manifest.chrome.json'); console.log('Validated Chrome MV3 manifest:', m.name, m.version);"
+          node -e "const m = require('./src/manifest.firefox.json'); console.log('Validated Firefox manifest:', m.name, m.version);"
