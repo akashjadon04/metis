@@ -8,6 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const env = require('./utils/env');
+const pkg = require('./package.json');
 
 const ASSET_PATH = process.env.ASSET_PATH || '/';
 
@@ -166,13 +167,17 @@ const options = {
           toType: 'file',
           transform(content) {
             const manifestObj = {
-              description: process.env.npm_package_description,
-              version: process.env.npm_package_version,
+              description:
+                process.env.npm_package_description ||
+                pkg.description ||
+                'Metis Extension',
+              version:
+                process.env.npm_package_version || pkg.version || '1.30.0',
               ...JSON.parse(content.toString()),
             };
             const isChrome = env.BROWSER === 'chrome';
 
-            if (manifestObj.version.includes('-')) {
+            if (manifestObj.version && manifestObj.version.includes('-')) {
               const [version, preRelease] = manifestObj.version.split('-');
 
               if (isChrome) {
